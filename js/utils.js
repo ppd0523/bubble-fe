@@ -8,7 +8,7 @@ function strfdate(date){
 }
 
 const ORIGIN = location.origin;
-const PORT= 52222;
+const PORT= 80;
 let STOCK_URL = {
     FILTER_API : (filter_id)=>{
         let url = `${ORIGIN}:${PORT}/api/filter/`
@@ -21,7 +21,7 @@ let STOCK_URL = {
         return url
     },
     STOCK_PRICE_API : (stock_code)=>{
-        `http://0.0.0.0:52222/api/stock/${stock_code}/price/`
+        `http://0.0.0.0:80/api/stock/${stock_code}/price/`
         let url = `${ORIGIN}:${PORT}/api/stock/`
         if (stock_code) url += `${stock_code}/price/`
         return url
