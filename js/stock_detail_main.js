@@ -9,7 +9,7 @@ container.append("h2")
 .classed("text", true)
 .text(stock_name)
 
-d3.json(URL.STOCK_PRICE_API(stock_code)).then(function(price_objs){
+d3.json(STOCK_URL.STOCK_PRICE_API(stock_code)).then(function(price_objs){
     console.log(price_objs);
     container.append("div")
     .selectAll("p")

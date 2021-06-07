@@ -27,12 +27,12 @@ let STOCK_URL = {
         return url
     },
     FILTER_DETAIL : (filter_id)=>{
-        let url = `${ORIGIN}:${PORT}/filter/`
+        let url = `${ORIGIN}/filter_detail.html`
         if (filter_id) url += `?filter_id=${filter_id}`;
         return url
     },
     STOCK_DETAIL : (stock_code, stock_name)=>{
-        let url = `${ORIGIN}:${PORT}/stock/`
+        let url = `${ORIGIN}/stock_detail.html`
         if(stock_code && stock_name) url += `?stock_code=${stock_code}&stock_name=${stock_name}`;
         return url
     },

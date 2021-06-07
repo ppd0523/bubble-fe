@@ -7,13 +7,13 @@ container.append("h2")
 .classed("title", true)
 .classed("text", true)
 
-d3.json(URL.FILTER_API(filter_id)).then(function(filter_obj){
+d3.json(STOCK_URL.FILTER_API(filter_id)).then(function(filter_obj){
     d3.select(".title")
     .text(filter_obj.filter_title)
 });
 
 
-d3.json(URL.REPORT_API(params.get("filter_id"), strfdate(new Date("2021-05-11")))).then(function(report_objs){
+d3.json(STOCK_URL.REPORT_API(params.get("filter_id"), strfdate(new Date("2021-05-11")))).then(function(report_objs){
     report_objs.forEach((obj, i, objs)=>{
         append_chart(obj);
         // console.log(obj);
@@ -36,7 +36,7 @@ function append_chart(report_obj){
     .classed("title noselect", true)
     .append("h3")
     .append("a")
-    .attr("href", URL.STOCK_DETAIL(report_obj.stock_code, report_obj.stock_name))
+    .attr("href", STOCK_URL.STOCK_DETAIL(report_obj.stock_code, report_obj.stock_name))
     .text(report_obj.stock_name)
     
     // content(graph)
