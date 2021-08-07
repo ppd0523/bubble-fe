@@ -8,16 +8,19 @@ const BUBBLE_URL = {
     REPORT_API(filter_id, date){
         return this.ORIGIN + `/api/filter/${filter_id}/report/${date}/`;
     },
-    STOCK_API(stock_code){
+    PRICE_API(stock_code){
         return this.ORIGIN + `/api/stock/${stock_code}/price/`;
+    },
+    INDEX(){
+        return "/index.html"
     },
     STOCK(stock_code, stock_name){
         return `/stock.html?stock_code=${stock_code}&stock_name=${stock_name}`;
     },
     FILTER(filter_id, filter_title){
-        return `/condition.html?filter_id=${filter_id}&filter_name=${filter_title}`;
+        return `/condition.html?filter_id=${filter_id}&filter_title=${filter_title}`;
     },
 
 }
 
-export default BUBBLE_URL;
+export {BUBBLE_URL, };

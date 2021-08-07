@@ -1,6 +1,6 @@
 import * as d3 from 'd3';
 import bootstrap from 'bootstrap/dist/css/bootstrap.min.css';
-import BUBBLE_URL from './urls.js';
+import {BUBBLE_URL} from './utils.js';
 
 document.title = "버블스탁";
 
@@ -15,10 +15,14 @@ const reportProms = filterProm.then(objs=>{
     .join("div")
         .classed("filter row mt-3", true)
         .attr("id", d=>"filter_id"+d.filter_id)
-        .on("click", function(e, d){
-            location.href = BUBBLE_URL.FILTER(d.filter_id, d.filter_title)
-            console.log(d);
-        });
+        .call(function(selection){
+            selection.each(function(data){
+                d3.select(this).on("click", function(e, d){
+                    location.href = `${BUBBLE_URL.FILTER(data.filter_id, data.filter_title)}`
+                })
+                
+            })
+        })
     
     let col_10 = rows.append("div")
     .classed("col-10", true)
@@ -32,7 +36,7 @@ const reportProms = filterProm.then(objs=>{
     rows.append("hr")
     .classed("text-light", true);
 
-    let proms = objs.map(obj=>d3.json(BUBBLE_URL.REPORT_API(obj.filter_id, "2021-08-06")))
+    let proms = objs.map(obj=>d3.json(BUBBLE_URL.REPORT_API(obj.filter_id, "2021-08-01")))
     return Promise.all(proms);
 });
 
@@ -46,7 +50,7 @@ reportProms.then(reportsByFilter=>{
     .append("div")
     .classed("col", true);
         
-    console.log(uls);
+    // console.log(uls);
 
     uls.call(function(selection){
         selection.each(function(data){
