@@ -1,6 +1,6 @@
 import * as d3 from 'd3';
 import bootstrap from 'bootstrap/dist/css/bootstrap.min.css';
-import BUBBLE_URL from './urls.js';
+import BUBBLE_URL from './utils.js';
 
 document.title = "종목"
 
