@@ -3,6 +3,7 @@ import bootstrap from 'bootstrap/dist/css/bootstrap.min.css';
 import {BUBBLE_URL} from './utils.js';
 
 document.title = "버블스탁";
+d3.select("nav.navbar").style("visibility", "visible");
 
 d3.select("body").classed("bg-dark", true);
 const container = d3.select("body").append("div").classed("container", true);
@@ -36,7 +37,7 @@ const reportProms = filterProm.then(objs=>{
     rows.append("hr")
     .classed("text-light", true);
 
-    let proms = objs.map(obj=>d3.json(BUBBLE_URL.REPORT_API(obj.filter_id, "2021-08-01")))
+    let proms = objs.map(obj=>d3.json(BUBBLE_URL.REPORT_API(obj.filter_id, "2021-08-09")))
     return Promise.all(proms);
 });
 
@@ -59,7 +60,7 @@ reportProms.then(reportsByFilter=>{
             .join("li")
                 .classed("list-inline-item m-1", true)
                 .append("a")
-                    .classed("text-decoration-none fs-5 link-secondary", true)
+                    .classed("text-decoration-none fs-6 link-secondary", true)
                     .attr("href", d=>BUBBLE_URL.STOCK(d.stock_code, d.stock_name))
                     .text(d=>d.stock_name)
         })
